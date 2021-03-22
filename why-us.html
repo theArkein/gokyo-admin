@@ -10,46 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
 
+    <link rel="stylesheet" href="assets/vendors/summernote/summernote-lite.min.css">
+
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
 </head>
-<style>
-    .summary-icon {
-        width: 3rem;
-        height: 3rem;
-        border-radius: .5rem;
-        background-color: #eee;
-        float: right;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .summary-icon i.bi{
-        color: #fff;
-    }
-    .summary-icon.purple{
-        background-color: #9694ff;
-    }
-    .summary-icon.blue{
-        background-color: #57caeb;
-    }
-    .summary-icon.green{
-        background-color: #ff7976;
-    }
-    .summary-icon.red{
-        background-color: #5ddab4;
-    }
-    .btn-blue{
-        background-color: #57caeb;
-        color: #fff;
-    }
-    .btn-purple {
-        background-color: #9694ff;
-        color: #fff;
-    }
-</style>
+
 <body>
     <div id="app">
         <div id="sidebar" class="active">
@@ -135,8 +103,8 @@
                             <ul class="submenu ">
                                 <li class="submenu-item ">
                                     <a href="banners.html">Banners</a>
-                                    <a href="testimonials.html">Testimonials</a>
-                                    <a href="why-us.html">Why Us</a>
+                                    <a href="#">Testimonials</a>
+                                    <a href="#">Why Us</a>
                                 </li>
                             </ul>
                         </li>
@@ -194,6 +162,11 @@
                                             <h6 class="mb-0 text-gray-600">Gokyo Peak</h6>
                                             <p class="mb-0 text-sm text-gray-600">Administrator</p>
                                         </div>
+                                        <div class="user-img d-flex align-items-center">
+                                            <div class="avatar avatar-md">
+                                                <img src="assets/images/faces/1.jpg">
+                                            </div>
+                                        </div>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
@@ -223,103 +196,135 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Dashboard</h3>
-                                <p class="text-subtitle text-muted">Summary.</p>
+                                <h3>Why Us</h3>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                        <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Posts
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">Why Us
+                                        </li>
                                     </ol>
                                 </nav>
                             </div>
                         </div>
+                        <div class="button">
+                            <button type="button" class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#addTestimonialModal">Add New Item</button>
+                        </div>
+                        </div>
                     </div>
-                    <section class="row">
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="summary-icon purple">
-                                                <i class="bi bi-journal-bookmark-fill"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold"><a href="bookings.html">New Bookings</a></h6>
-                                            <h6 class="font-extrabold mb-0">28</h6>
-                                        </div>
-                                    </div>
+
+                    <section class="section">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" id="table1">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Icon</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Experience</td>
+                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis facilis error molestias sed fugiat consectetur nostrum suscipit. Ut maiores, architecto! Non, beatae qui deleniti odit, voluptate possimus suscipit dignissimos accusamus.</td>
+                                                <td>Image Here</td>
+                                                <td>
+                                                    <a href="#" class="btn btn-sm btn-primary rounded-pill">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm btn-danger rounded-pill">
+                                                        <i class="bi bi-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="summary-icon blue">
-                                                <i class="bi bi-stack"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold"><a href="packages.html">Total Packages</a></h6>
-                                            <h6 class="font-extrabold mb-0">62</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="summary-icon green">
-                                                <i class="bi bi-card-checklist"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold"><a href="categories.html">Categories.html</a></h6>
-                                            <h6 class="font-extrabold mb-0">8</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <!--     <div class="col-6 col-lg-3 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-3 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="summary-icon red">
-                                                <i class="iconly-boldBookmark"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h6 class="text-muted font-semibold">Summary B</h6>
-                                            <h6 class="font-extrabold mb-0">112</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+
                     </section>
-                    <section class="row buttons">
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <a href="category.html?category=new" class="btn btn-lg btn-blue rounded-pill">Add New Package</a>
+
+                </div>
+
+            </div>
+
+            <!-- Modals -->
+            <div class="modals">
+                <div class="modal fade text-left modal-borderless show" id="addTestimonialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-modal="true" >
+                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add New Item</h5>
+                                <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+                                    <i data-feather="x"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="form">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="client-name">Title</label>
+                                                <input type="text" id="client-name" class="form-control"
+                                                    placeholder="Client Name" name="client_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                                                <textarea class="form-control" id="quote" name="quote" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="client-image">Icon</label>
+                                                <input type="file" id="client-image" class="form-control"
+                                                    placeholder="Client Image" name="client_image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Close</span>
+                                        </button>
+                                        <button type="submit"
+                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="col-6 col-lg-3 col-md-6">
-                            <a href="category.html?category=new" class="btn btn-lg btn-purple rounded-pill">Add New Category</a>
-                        </div>
-                    </section>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/jquery/jquery.min.js"></script>
+    <script src="assets/vendors/summernote/summernote-lite.min.js"></script>
+    <script>
+        $('.summernote').summernote({
+            tabsize: 2,
+            height: 120,
+        })
 
+        $('#form').submit(function(e){
+            e.preventDefault()
+            let formData = new FormData($('#form')[0]);
+            let formDataJson = {}
+            for (let pair of formData.entries()) {
+              formDataJson[pair[0]] = pair[1]
+            }
+            console.log(formDataJson)
+        })
+    </script>
     <script src="assets/js/main.js"></script>
 </body>
 
