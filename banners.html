@@ -10,12 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
 
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/vendors/toastify/toastify.css">
     <link rel="stylesheet" href="assets/vendors/summernote/summernote-lite.min.css">
 
-    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -95,7 +95,7 @@
                             </ul>
                         </li>
 
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item  has-sub active">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-files"></i>
                                 <span>Posts</span>
@@ -103,8 +103,8 @@
                             <ul class="submenu ">
                                 <li class="submenu-item ">
                                     <a href="banners.html">Banners</a>
-                                    <a href="#">Testimonials</a>
-                                    <a href="#">Why Us</a>
+                                    <a href="testimonials.html">Testimonials</a>
+                                    <a href="why-us.html">Why Us</a>
                                 </li>
                             </ul>
                         </li>
@@ -202,6 +202,8 @@
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Posts
+                                        </li>
                                         <li class="breadcrumb-item active" aria-current="page">Banners
                                         </li>
                                     </ol>
@@ -222,31 +224,13 @@
                                         <thead>
                                             <tr>
                                                 <th>Title</th>
-                                                <th>Tag</th>
-                                                <th>Image</th>
-                                                <th>Button Text</th>
-                                                <th>Button Link</th>
+                                                <th>Order</th>
+                                                <th>Status</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Make your winter vacation more cool</td>
-                                                <td>25% discounts on every packages</td>
-                                                <td>See Packages</td>
-                                                <td>Image Here</td>
-                                                <td>
-                                                    <a href="https://thearkein.github.io/gokyo-peak">https://thearkein.github.io/gokyo-peak</a>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-primary rounded-pill">
-                                                        <i class="bi bi-pencil"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-sm btn-danger rounded-pill">
-                                                        <i class="bi bi-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -261,7 +245,9 @@
 
             <!-- Modals -->
             <div class="modals">
-                <div class="modal fade text-left modal-borderless show" id="createBannerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-modal="true" >
+                
+                <!-- New Banner Form -->
+                <div class="modal fade text-left modal-borderless" id="createBannerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-modal="true" >
                     <div class="modal-dialog modal-dialog-scrollable" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -276,34 +262,41 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="title">Title</label>
-                                                <input type="text" id="title" class="form-control"
-                                                    placeholder="Banner Title" name="title">
+                                                <textarea id="title" class="form-control" name="title" required></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="tag">Tag</label>
-                                                <input type="text" id="title" class="form-control"
-                                                    placeholder="Banner Tagline" name="tag">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="image">Image</label>
-                                                <input type="file" id="icon" class="form-control"
-                                                    placeholder="Banner Image" name="image">
+                                                <input type="text" id="tag" class="form-control"
+                                                    placeholder="Banner Tagline" name="tag" required>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="button-text">Button Text</label>
-                                                <input type="text" id="button-text" class="form-control"
-                                                    placeholder="Banner Button Text" name="button_text">
+                                                <label for="image">Image</label>
+                                                <input type="file" id="image" class="form-control"
+                                                    placeholder="Banner Image" name="image" required>
                                             </div>
+                                        </div>
+                                        <div class="col-12">
                                             <div class="form-group">
-                                                <label for="button-link">Button Link</label>
-                                                <input type="text" id="title" class="form-control"
-                                                    placeholder="Banner Button Link" name="button_link">
+                                                <label for="order">Order</label>
+                                                <input type="number" id="order" class="form-control"
+                                                    placeholder="Banner Order" name="order" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="status" name="status" checked="">
+                                                <label class="form-check-label" for="status">Status (Will be published on site)</label>
+                                            </div>
+                                        </div>  
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="link">Button Link</label>
+                                                <input type="text" id="link" class="form-control"
+                                                    placeholder="Banner Button Link" name="link" required>
                                             </div>
                                         </div>
                                     </div>
@@ -320,30 +313,268 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="modal fade text-left modal-borderless" id="editBannerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-modal="true" >
+                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Edit Banner</h5>
+                                <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+                                    <i data-feather="x"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="form">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="title">Title</label>
+                                                <textarea id="title" class="form-control" name="title" required>
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="tag">Tag</label>
+                                                <input type="text" id="tag" class="form-control"
+                                                    placeholder="Banner Tagline" name="tag" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="image">Image</label>
+                                                <input type="file" id="image" class="form-control"
+                                                    placeholder="Banner Image" name="image">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="order">Order</label>
+                                                <input type="number" id="order" class="form-control"
+                                                    placeholder="Banner Order" name="order" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="status" name="status" checked="">
+                                                <label class="form-check-label" for="status">Status (Will be published on site)</label>
+                                            </div>
+                                        </div>  
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="link">Button Link</label>
+                                                <input type="text" id="link" class="form-control"
+                                                    placeholder="Banner Button Link" name="link" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Close</span>
+                                        </button>
+                                        <button type="submit"
+                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading Spinner -->
+               <div class="modal fade text-left modal-borderless show" id="spinner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            </div>
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <p>
+                                    <img src="assets/vendors/svg-loaders/audio.svg" class="me-4" style="width: 3rem" alt="audio">
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendors/jquery/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
     <script src="assets/vendors/summernote/summernote-lite.min.js"></script>
+    <script src="assets/vendors/toastify/toastify.js"></script>
+    <script src="assets/js/extensions/toastify.js"></script>
+
+    <script src="assets/js/main.js"></script>
     <script>
+
+
+        const fetchTableData = function (){
+            let url = `http://18.206.147.162/api/v1/info/banner/`
+            fetch(url).then(response => response.json())
+            .then(result => {
+                populateTableData(result)
+            })
+        }
+        
+        $(document).ready(function(){
+            fetchTableData()
+        })
+
+
+        const formSubmit = function(formSelector, url, fetchMethod){
+            $('#spinner').show()
+            const formData = new FormData();
+            const fileField = document.querySelector(`${formSelector} input[type="file"]`);
+            formData.append('title', $(`${formSelector} #title`)[0].value);
+            formData.append('tag', $(`${formSelector} #tag`)[0].value);
+            formData.append('order', $(`${formSelector} #order`)[0].value);
+            formData.append('status', $(`${formSelector} #status`)[0].checked);
+            formData.append('link', $(`${formSelector} #link`)[0].value);
+            if(fileField.files.length)
+                formData.append('image', fileField.files[0]);
+
+
+            fetch(url, {
+              method: fetchMethod,
+              body: formData,
+            })
+            .then(response => response.json())
+            .then(result => {
+                $('#spinner').hide()
+                let message=""
+                if(fetchMethod=="POST")
+                    message = "New banner added successfully"
+                else 
+                    message = "Banner updated successfully"
+                Toastify({
+                    text: message,
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#4fbe87",
+                }).showToast();
+                fetchTableData()
+                console.log('Fetch Success:', result);
+            })
+            .catch(error => {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Something Went Wrong. Refresh and Try Again",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#f3616d",
+                }).showToast();
+                console.error('Fetch Error:', error);
+            });
+
+        }
+
+        const update = function(banner){
+            let formSelector = '#editBannerModal #form'
+            $(`${formSelector} #title`)[0].value=banner.title
+            $(`${formSelector} #tag`)[0].value=banner.tag
+            $(`${formSelector} #order`)[0].value=banner.order
+            $(`${formSelector} #link`)[0].value=banner.link
+            $(`${formSelector} #status`)[0].checked=banner.status
+
+
+            $(formSelector).submit(function(e){
+                e.preventDefault()
+                formSubmit(formSelector, `http://18.206.147.162/api/v1/info/banner/${banner.id}/`, "PUT")
+            })
+
+        }
+        const remove = function(banner){
+            $('#spinner').show()
+            window.confirm("Are you sure you to delete?")
+            fetch(`http://18.206.147.162/api/v1/info/banner/${banner.id}`, {
+              method: "DELETE"
+            })
+            .then(response =>  {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Banner deleted successfully",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#4fbe87",
+                }).showToast();
+                fetchTableData()
+                // console.log('Fetch Success:', result);
+            })
+            .catch(error => {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Something Went Wrong. Refresh and Try Again",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#f3616d",
+                }).showToast();
+                // console.error('Fetch Error:', error);
+            });
+        }
+
+        const populateTableData = (banners)=>{
+            let tbody = $('tbody')[0]
+            tbody.innerHTML=""
+            
+            if(banners.length==0){
+                tbody.append("No data to show")
+                return 
+            }
+            banners.forEach(banner=>{
+                let tr = document.createElement('tr')
+                tr.innerHTML = `<tr>
+                            <td>${banner.title}</td>
+                            <td>${banner.order}</td>
+                            ${(banner.status)? "<td><span class='badge bg-success'> Active </span></td>": "<td><span class='badge bg-warning'> Inactive </span></td>"}
+                            <td>
+                                <a class="btn btn-sm btn-primary rounded-pill editBanner${banner.id}" data-bs-toggle="modal" data-bs-target="#editBannerModal">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a class="btn btn-sm btn-danger rounded-pill deleteBanner${banner.id}">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>`
+                tbody.appendChild(tr)
+                let editBtn = $(`.editBanner${banner.id}`)
+                let deleteBtn = $(`.deleteBanner${banner.id}`)
+
+                editBtn.click(function (){
+                    update(banner)
+                })
+                deleteBtn.click(function (){
+                    remove(banner)
+                })
+
+            })
+        }
+
         $('.summernote').summernote({
             tabsize: 2,
             height: 120,
         })
+    
 
-        $('#form').submit(function(e){
+        $('#createBannerModal #form').submit(function(e){
             e.preventDefault()
-            let formData = new FormData($('#form')[0]);
-            let formDataJson = {}
-            for (let pair of formData.entries()) {
-              formDataJson[pair[0]] = pair[1]
-            }
-            console.log(formDataJson)
+            let formSelector = '#createBannerModal #form'
+            $(formSelector).submit(function(e){
+                e.preventDefault()
+                formSubmit(formSelector, `http://18.206.147.162/api/v1/info/banner/`, "POST")
+            })
         })
     </script>
-    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
