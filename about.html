@@ -10,12 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
 
-    <link rel="stylesheet" href="assets/vendors/summernote/summernote-lite.min.css">
-
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/vendors/toastify/toastify.css">
+
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -25,9 +24,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <!-- <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a> -->
-                            <a href="dashboard.html">Gokyo Tours & Travels</a>
-
+                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -38,7 +35,7 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item">
                             <a href="dashboard.html" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
@@ -51,51 +48,22 @@
                                 <span>Bookings</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
+                        
+                        <li class="sidebar-item ">
+                            <a href="packages.html" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Packages</span>
                             </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="packages.html">List All Packages</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="package.html">Add New Package</a>
-                                </li>
-                            </ul>
                         </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
+                        <li class="sidebar-item ">
+                            <a href="categories.html" class='sidebar-link'>
                                 <i class="bi bi-card-checklist"></i>
-                                <span>Catgories</span>
+                                <span>Categories</span>
                             </a>
-                            <ul class="submenu">
-                                <li class="submenu-item ">
-                                    <a href="categories.html">List All Catgegories</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="category.html">Add New Category</a>
-                                </li>
-                            </ul>
                         </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-folder"></i>
-                                <span>Pages</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="component-alert.html">Home</a>
-                                    <a href="component-alert.html">Contact</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item  has-sub active">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-files"></i>
                                 <span>Posts</span>
@@ -103,8 +71,11 @@
                             <ul class="submenu ">
                                 <li class="submenu-item ">
                                     <a href="banners.html">Banners</a>
-                                    <a href="#">Testimonials</a>
-                                    <a href="#">Why Us</a>
+                                    <a href="testimonials.html">Testimonials</a>
+                                    <a href="why-us.html">Why Choose Us</a>
+                                    <a href="contacts.html">Contact Details</a>
+                                    <a href="about.html">About Details</a>
+
                                 </li>
                             </ul>
                         </li>
@@ -196,136 +167,173 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Package</h3>
-                                <p class="text-subtitle text-muted">Annapurna</p>
+                                <h3>About Details</h3>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Package
+                                        <li class="breadcrumb-item active" aria-current="page">Posts
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">About Details
                                         </li>
                                     </ol>
                                 </nav>
                             </div>
                         </div>
-                        <div class="button">
-                            <a href="#" class="btn btn-sm btn-danger rounded-pill">Delete Package</a>
-                        </div>
-                        </div>
                     </div>
+                </div>
 
-                    <section id="multiple-column-form">
-                        <div class="row match-height">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <form id="form">
-                                                <div class="row">
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="title">Title</label>
-                                                            <input type="text" id="title" class="form-control"
-                                                                placeholder="Package Title" name="title">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="tag">Tag</label>
-                                                            <input type="text" id="tag" class="form-control"
-                                                                placeholder="Package Tag" name="tag">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <label for="description">Description</label>
-                                                            <div id="description" class="summernote"></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="price">Price</label>
-                                                            <input type="text" id="price" class="form-control"
-                                                                placeholder="City" name="price">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="thumbnail">Thumbnail</label>
-                                                            <input type="file" id="thumbnail" class="form-control"
-                                                                placeholder="thumbnail" name="thumbnail">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="place">Place</label>
-                                                            <input type="text" id="place" class="form-control"
-                                                                name="place" placeholder="Country">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <label for="includes">Includes/Excludes</label>
-                                                            <div id="includes" class="summernote"></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-12 d-flex justify-content-end">
-                                                        <button type="submit"
-                                                            class="btn btn-primary me-1 mb-1">Update</button>
-                                                        <button type="reset"
-                                                            class="btn btn-light-secondary me-1 mb-1">Reset</button>
-                                                    </div>
-
-                                                </div>
-                                            </form>
+                    <section class="section">
+                        <div class="card">
+                            <div class="card-body">
+                                <form id="form">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="introduction">Introduction</label>
+                                                <textarea id="introduction" class="form-control" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="history">History</label>
+                                                <textarea id="history" class="form-control" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="mission">Mission</label>
+                                                <textarea id="mission" class="form-control" required></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit"
+                                            class="btn btn-primary me-1 mb-1">Update</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+
                     </section>
 
                 </div>
+
             </div>
+
+            <!-- Modals -->
+            <div class="modals">
+
+                <!-- Loading Spinner -->
+               <div class="modal fade text-left modal-borderless show" id="spinner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            </div>
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <p>
+                                    <img src="assets/vendors/svg-loaders/audio.svg" class="me-4" style="width: 3rem" alt="audio">
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendors/jquery/jquery.min.js"></script>
-    <script src="assets/vendors/summernote/summernote-lite.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/toastify/toastify.js"></script>
+    <script src="assets/js/main.js"></script>
     <script>
-        $('.summernote').summernote({
-            tabsize: 2,
-            height: 120,
+
+        const BASEURL = `http://18.206.147.162/api/v1/info/about/`
+
+        $(document).ready(async function(){
+            fetchData()
         })
+
+        const fetchData = function (){
+            const fetchURL = `${BASEURL}`
+            
+            $('#spinner').show()    
+            
+            fetch(fetchURL).then(response => response.json()).then(result => {
+                    populateForm(result[0])
+                })
+
+        }
+
+        const populateForm = (item)=>{
+        
+            let formSelector = '#form'
+        
+            $(`${formSelector} #introduction`)[0].value=item.introduction
+            $(`${formSelector} #history`)[0].value=item.history
+            $(`${formSelector} #mission`)[0].value=item.mission
+
+            $(formSelector)[0].setAttribute("itemId", item.id)   
+        
+            $('#spinner').hide()
+        }
+
+        const formSubmit = function(formSelector, url, fetchMethod){
+            $('#spinner').show()
+
+            let formData = new FormData();
+
+            formData.append('introduction', $(`${formSelector} #introduction`)[0].value);
+            formData.append('history', $(`${formSelector} #history`)[0].value);
+            formData.append('mission', $(`${formSelector} #mission`)[0].value);
+
+
+            fetch(url, {
+              method: fetchMethod,
+              body: formData,
+            })
+            .then(response => response.json())
+            .then(result => {
+                $('#spinner').hide()
+                let message=""
+                if(fetchMethod=="POST")
+                    message = "Added successfully"
+                else 
+                    message = "Updated successfully"
+                Toastify({
+                    text: message,
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#4fbe87",
+                }).showToast();
+                fetchData()
+                console.log('Fetch Success:', result);
+            })
+            .catch(error => {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Something Went Wrong. Refresh and Try Again",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#f3616d",
+                }).showToast();
+                console.error('Fetch Error:', error);
+            });
+        }
 
         $('#form').submit(function(e){
             e.preventDefault()
-            let formData = new FormData($('#form')[0]);
-            let formDataJson = {}
-            let package = {}
-            for (let pair of formData.entries()) {
-              formDataJson[pair[0]] = pair[1]
-            }
-            let description =  $('.summernote').summernote('code')
-            package.details = formDataJson
-            package.description = description
-            console.log(package)
+            let formSelector = '#form'
+            let id = $(formSelector)[0].getAttribute("itemId")
+            const url = `${BASEURL + id}/`
+            formSubmit(formSelector, url, "PUT")
         })
-
-
     </script>
-
-
-
-    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

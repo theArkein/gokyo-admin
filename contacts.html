@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="assets/css/bootstrap.css">
 
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
     <link rel="stylesheet" href="assets/vendors/toastify/toastify.css">
 
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
@@ -58,14 +57,14 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item ">
                             <a href="categories.html" class='sidebar-link'>
                                 <i class="bi bi-card-checklist"></i>
                                 <span>Categories</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item  has-sub active">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-files"></i>
                                 <span>Posts</span>
@@ -169,41 +168,76 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Categories</h3>
+                                <h3>Contact Details</h3>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Packages
+                                        <li class="breadcrumb-item active" aria-current="page">Posts
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">Contact Details
                                         </li>
                                     </ol>
                                 </nav>
                             </div>
                         </div>
-                        <div class="button">
-                            <button type="button" class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#createModal">Add New Category</button>
-                        </div>
-                        </div>
                     </div>
+                </div>
 
                     <section class="section">
                         <div class="card">
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="table1">
-                                        <thead>
-                                            <tr>
-                                                <th>Category Name</th>
-                                                <th>Category Icon</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr><td class='dataTables-empty' colspan='3'>Loading...</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <form id="form">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="address">Address</label>
+                                                <input id="address" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="email" id="email" class="form-control"
+                                                   required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="phone">Phone</label>
+                                                <input type="text" id="phone" class="form-control"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="phone1">Mobile</label>
+                                                <input type="text" id="mobile" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="facebook_link">Facebook Link</label>
+                                                <input type="text" id="facebook_link" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="instagram_link">Instagram Link</label>
+                                                <input type="text" id="instagram_link" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="youtube_link">Youtube Link</label>
+                                                <input type="text" id="youtube_link" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit"
+                                            class="btn btn-primary me-1 mb-1">Update</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
@@ -214,91 +248,7 @@
             </div>
 
             <!-- Modals -->
-            <div class="modals"> 
-                <!-- New Banner Form -->
-                <div class="modal fade text-left modal-borderless" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-modal="true" >
-                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Add New Category</h5>
-                                <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
-                                    <i data-feather="x"></i>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="form">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="name">Category Name</label>
-                                                <input type="text" id="name" class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="image">Category Icon</label>
-                                                <input type="file" id="image" class="form-control" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
-                                            <i class="bx bx-x d-block d-sm-none"></i>
-                                            <span class="d-none d-sm-block">Close</span>
-                                        </button>
-                                        <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal fade text-left modal-borderless" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-modal="true" >
-                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Edit Category</h5>
-                                <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
-                                    <i data-feather="x"></i>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="form">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="name">Catgory Name</label>
-                                                <input type="text" id="name" class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="review">Category Icon</label>
-                                                <img src="" alt="" width="50px" height="50px">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="image">Category Icon</label>
-                                                <input type="file" id="image" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
-                                            <i class="bx bx-x d-block d-sm-none"></i>
-                                            <span class="d-none d-sm-block">Close</span>
-                                        </button>
-                                        <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="modals">
 
                 <!-- Loading Spinner -->
                <div class="modal fade text-left modal-borderless show" id="spinner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4" aria-hidden="true">
@@ -316,122 +266,62 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
-
     <script src="assets/vendors/jquery/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-
-    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
     <script src="assets/vendors/toastify/toastify.js"></script>
-
     <script src="assets/js/main.js"></script>
-   <script>
+    <script>
 
-        const BASEURL = `http://18.206.147.162/api/v1/packages/category/`
+        const BASEURL = `http://18.206.147.162/api/v1/info/contact/`
 
-        let table1 = document.querySelector('#table1');
-        let dataTable = new simpleDatatables.DataTable(table1);
-
-        $(document).ready(function(){
+        $(document).ready(async function(){
             fetchData()
         })
 
         const fetchData = function (){
             const fetchURL = `${BASEURL}`
+            
+            $('#spinner').show()    
+            
             fetch(fetchURL).then(response => response.json()).then(result => {
-                    populateTable(result)
+                    populateForm(result[0])
                 })
 
         }
 
-        const populateTable = (items)=>{
-            dataTable.destroy()
-            let tbody = $('tbody')[0]
+        const populateForm = (item)=>{
+        
+            let formSelector = '#form'
+        
+            $(`${formSelector} #address`)[0].value=item.address
+            $(`${formSelector} #email`)[0].value=item.email
+            $(`${formSelector} #phone`)[0].value=item.phone
+            $(`${formSelector} #mobile`)[0].value=item.phone2
+            $(`${formSelector} #facebook_link`)[0].value=item.facebook_link
+            $(`${formSelector} #instagram_link`)[0].value=item.instagram_link
+            $(`${formSelector} #youtube_link`)[0].value=item.youtube_link
 
-            tbody.innerHTML=""
-            
-            if(items.length==0){
-                tbody.innerHTML="<tr><td class='dataTables-empty' colspan='3'>No data to show</td></tr>"
-                return 
-            }
-
-            items.forEach(item=>{
-                let tr = document.createElement('tr')
-                let stringItem = JSON.stringify(item)
-                tr.innerHTML = `<tr>
-                            <td>${item.name}</td>
-                            <td><img src="${item.image}" style="width:40px; height:40px; border-radius:50%"></td>
-                            <td>
-                                <a class="btn btn-sm btn-primary rounded-pill" onclick="update(${item.id})" data-bs-toggle="modal" data-bs-target="#updateModal">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
-                                <a class="btn btn-sm btn-danger rounded-pill" onclick="remove(${item.id})">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                            </td>
-                        </tr>`
-                tbody.appendChild(tr)
-            })
-
-            let table1 = document.querySelector('#table1');
-            dataTable = new simpleDatatables.DataTable(table1);
-        }
-
-        const update = function(id){
-            $('#spinner').show()
-            const fetchURL = `${BASEURL + id}/`
-            fetch(fetchURL).then(response => response.json()).then(item => {
-                $('#spinner').hide()
-                
-                let formSelector = '#updateModal #form'
-                $(`${formSelector} #name`)[0].value=item.name
-                $(`${formSelector} img`)[0].src=item.image
-
-                $(formSelector)[0].setAttribute("itemId", item.id)
-            })              
-        }
-
-        const remove = function(id){
-            if(!window.confirm("Are you sure to delete?"))
-                return false
-            $('#spinner').show()
-            fetch(`${BASEURL + id}/`, {
-              method: "DELETE"
-            }).then(response =>  {
-                $('#spinner').hide()
-                Toastify({
-                    text: "Deleted successfully",
-                    duration: 3000,
-                    close:true,
-                    gravity:"top",
-                    position: "center",
-                    backgroundColor: "#4fbe87",
-                }).showToast();
-                fetchData()
-            }).catch(error => {
-                $('#spinner').hide()
-                Toastify({
-                    text: "Something Went Wrong. Refresh and Try Again",
-                    duration: 3000,
-                    close:true,
-                    gravity:"top",
-                    position: "center",
-                    backgroundColor: "#f3616d",
-                }).showToast();
-                // console.error('Fetch Error:', error);
-            });
+            $(formSelector)[0].setAttribute("itemId", item.id)   
+        
+            $('#spinner').hide()
         }
 
         const formSubmit = function(formSelector, url, fetchMethod){
             $('#spinner').show()
-            const formData = new FormData();
-            const fileField = document.querySelector(`${formSelector} input[type="file"]`);
-            formData.append('name', $(`${formSelector} #name`)[0].value)
 
-            if(fileField.files.length)
-                formData.append('image', fileField.files[0]);
+            let formData = new FormData();
+
+            formData.append('address', $(`${formSelector} #address`)[0].value);
+            formData.append('email', $(`${formSelector} #email`)[0].value);
+            formData.append('phone', $(`${formSelector} #phone`)[0].value);
+            formData.append('phone2', $(`${formSelector} #mobile`)[0].value);
+            formData.append('facebook_link', $(`${formSelector} #facebook_link`)[0].value);
+            formData.append('instagram_link', $(`${formSelector} #instagram_link`)[0].value);
+            formData.append('youtube_link', $(`${formSelector} #youtube_link`)[0].value);
+
+
             fetch(url, {
               method: fetchMethod,
               body: formData,
@@ -469,20 +359,13 @@
             });
         }
 
-        $('#updateModal #form').submit(function(e){
+        $('#form').submit(function(e){
             e.preventDefault()
-            let formSelector = '#updateModal #form'
+            let formSelector = '#form'
             let id = $(formSelector)[0].getAttribute("itemId")
             const url = `${BASEURL + id}/`
             formSubmit(formSelector, url, "PUT")
         })
-
-        $('#createModal #form').submit(function(e){
-            e.preventDefault()
-            let formSelector = '#createModal #form'
-            formSubmit(formSelector, BASEURL, "POST")
-        })
-
     </script>
 </body>
 

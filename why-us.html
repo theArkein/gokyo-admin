@@ -10,9 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
 
-    <link rel="stylesheet" href="assets/vendors/summernote/summernote-lite.min.css">
+    <link rel="stylesheet" href="assets/vendors/toastify/toastify.css">
+    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
 
-    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
@@ -25,9 +25,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <!-- <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a> -->
-                            <a href="dashboard.html">Gokyo Tours & Travels</a>
-
+                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -38,7 +36,7 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item">
                             <a href="dashboard.html" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
@@ -51,51 +49,23 @@
                                 <span>Bookings</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
+                        
+                        <li class="sidebar-item ">
+                            <a href="packages.html" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Packages</span>
                             </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="packages.html">List All Packages</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="package.html">Add New Package</a>
-                                </li>
-                            </ul>
                         </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
+                        <li class="sidebar-item ">
+                            <a href="categories.html" class='sidebar-link'>
                                 <i class="bi bi-card-checklist"></i>
-                                <span>Catgories</span>
+                                <span>Categories</span>
                             </a>
-                            <ul class="submenu">
-                                <li class="submenu-item ">
-                                    <a href="categories.html">List All Catgegories</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="category.html">Add New Category</a>
-                                </li>
-                            </ul>
                         </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-folder"></i>
-                                <span>Pages</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="component-alert.html">Home</a>
-                                    <a href="component-alert.html">Contact</a>
-                                </li>
-                            </ul>
-                        </li>
 
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item  has-sub active">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-files"></i>
                                 <span>Posts</span>
@@ -103,8 +73,10 @@
                             <ul class="submenu ">
                                 <li class="submenu-item ">
                                     <a href="banners.html">Banners</a>
-                                    <a href="#">Testimonials</a>
-                                    <a href="#">Why Us</a>
+                                    <a href="testimonials.html">Testimonials</a>
+                                    <a href="why-us.html">Why Choose Us</a>
+                                    <a href="contacts.html">Contact Details</a>
+                                    <a href="about.html">About Details</a>
                                 </li>
                             </ul>
                         </li>
@@ -211,7 +183,7 @@
                             </div>
                         </div>
                         <div class="button">
-                            <button type="button" class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#addTestimonialModal">Add New Item</button>
+                            <button type="button" class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#createModal">Add New Item</button>
                         </div>
                         </div>
                     </div>
@@ -226,22 +198,12 @@
                                                 <th>Title</th>
                                                 <th>Description</th>
                                                 <th>Icon</th>
+                                                <th>Publish</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Experience</td>
-                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis facilis error molestias sed fugiat consectetur nostrum suscipit. Ut maiores, architecto! Non, beatae qui deleniti odit, voluptate possimus suscipit dignissimos accusamus.</td>
-                                                <td>Image Here</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-sm btn-primary rounded-pill">
-                                                        <i class="bi bi-pencil"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-sm btn-danger rounded-pill">
-                                                        <i class="bi bi-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                            <tr><td class='dataTables-empty' colspan='5'>Loading...</td></tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -256,7 +218,8 @@
 
             <!-- Modals -->
             <div class="modals">
-                <div class="modal fade text-left modal-borderless show" id="addTestimonialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-modal="true" >
+                
+                <div class="modal fade text-left modal-borderless show" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-modal="true" >
                     <div class="modal-dialog modal-dialog-scrollable" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -270,24 +233,32 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="client-name">Title</label>
-                                                <input type="text" id="client-name" class="form-control"
-                                                    placeholder="Client Name" name="client_name">
+                                                <label for="title">Title</label>
+                                                <input type="text" id="title" class="form-control"
+                                                    placeholder="title">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                                                <textarea class="form-control" id="quote" name="quote" rows="3"></textarea>
+                                                <textarea class="form-control" id="content" rows="3"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="client-image">Icon</label>
-                                                <input type="file" id="client-image" class="form-control"
-                                                    placeholder="Client Image" name="client_image">
+                                                <label for="icon">Icon</label>
+                                                <input type="file" id="icon" class="form-control"
+                                                    placeholder="Icon">
                                             </div>
                                         </div>
+
+                                        <div class="col-12">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="status" name="status" checked="">
+                                                <label class="form-check-label" for="status">Publish</label>
+                                            </div>
+                                        </div> 
+
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
@@ -302,30 +273,254 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="modal fade text-left modal-borderless show" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-modal="true" >
+                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add New Item</h5>
+                                <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+                                    <i data-feather="x"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="form">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="title">Title</label>
+                                                <input type="text" id="title" class="form-control"
+                                                    placeholder="title">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                                                <textarea class="form-control" id="content" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="image">Icon</label>
+                                                <img src="" alt="" width="100px" height="100px" style="border-radius: 50%; object-fit: cover;">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="icon">Icon</label>
+                                                <input type="file" id="icon" class="form-control"
+                                                    placeholder="Icon">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="status" name="status" checked="">
+                                                <label class="form-check-label" for="status">Publish</label>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Close</span>
+                                        </button>
+                                        <button type="submit"
+                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Loading Spinner -->
+               <div class="modal fade text-left modal-borderless show" id="spinner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            </div>
+                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                <p>
+                                    <img src="assets/vendors/svg-loaders/audio.svg" class="me-4" style="width: 3rem" alt="audio">
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendors/jquery/jquery.min.js"></script>
-    <script src="assets/vendors/summernote/summernote-lite.min.js"></script>
+    <script src="assets/vendors/toastify/toastify.js"></script>
+    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/js/main.js"></script>
     <script>
-        $('.summernote').summernote({
-            tabsize: 2,
-            height: 120,
+
+        const BASEURL = `http://18.206.147.162/api/v1/info/choose/`
+        
+        $(document).ready(async function(){
+            fetchData()
         })
 
-        $('#form').submit(function(e){
-            e.preventDefault()
-            let formData = new FormData($('#form')[0]);
-            let formDataJson = {}
-            for (let pair of formData.entries()) {
-              formDataJson[pair[0]] = pair[1]
+        const fetchData = function (){
+            const fetchURL = `${BASEURL}`
+            fetch(fetchURL).then(response => response.json()).then(result => {
+                    populateTable(result)
+                })
+
+        }
+
+        const populateTable = (items)=>{
+            let tbody = $('tbody')[0]
+
+            tbody.innerHTML=""
+            
+            if(items.length==0){
+                tbody.innerHTML="<tr><td class='dataTables-empty' colspan='5'>No data to show</td></tr>"
+                return 
             }
-            console.log(formDataJson)
+
+            items.forEach(item=>{
+                let tr = document.createElement('tr')
+                tr.innerHTML = `<tr>
+                                    <td>${item.title}</td>
+                                    <td>${item.content}</td>
+                                    <td><img src="${item.icon}" style="width: 60px; height: 60px; object-fit: cover; border-radius:50%"></td>
+                                     ${(item.status)? "<td><span class='badge bg-success'> Active </span></td>": "<td><span class='badge bg-warning'> Inactive </span></td>"}
+                                    <td>
+                                        <a class="btn btn-sm btn-primary rounded-pill" onclick="update(${item.id})" data-bs-toggle="modal" data-bs-target="#updateModal">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger rounded-pill" onclick="remove(${item.id})">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>`
+
+                tbody.appendChild(tr)
+            })
+
+            let table1 = document.querySelector('#table1');
+            let dataTable = new simpleDatatables.DataTable(table1);
+        }
+
+        const update = function(id){
+            $('#spinner').show()
+            const fetchURL = `${BASEURL + id}/`
+            fetch(fetchURL).then(response => response.json()).then(item => {
+                $('#spinner').hide()
+                let formSelector = '#updateModal #form'
+                $(`${formSelector} #title`)[0].value=item.title
+                $(`${formSelector} #content`)[0].value=item.content
+                $(`${formSelector} img`)[0].src=item.icon
+                
+                $(`${formSelector} #status`)[0].checked=item.status
+
+                $(formSelector)[0].setAttribute("itemId", item.id)
+            })              
+        }
+
+        const remove = function(id){
+            if(!window.confirm("Are you sure to delete?"))
+                return false
+            $('#spinner').show()
+            fetch(`${BASEURL + id}/`, {
+              method: "DELETE"
+            }).then(response =>  {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Deleted successfully",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#4fbe87",
+                }).showToast();
+                fetchData()
+            }).catch(error => {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Something Went Wrong. Refresh and Try Again",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#f3616d",
+                }).showToast();
+                // console.error('Fetch Error:', error);
+            });
+        }
+
+        const formSubmit = function(formSelector, url, fetchMethod){
+            $('#spinner').show()
+
+            let formData = new FormData();
+
+            const fileField = document.querySelector(`${formSelector} input[type="file"]`);
+            formData.append('title', $(`${formSelector} #title`)[0].value);
+            formData.append('content', $(`${formSelector} #content`)[0].value);
+            formData.append('status', $(`${formSelector} #status`)[0].checked);
+            
+            if(fileField.files.length)
+                formData.append('icon', fileField.files[0]);
+
+
+            fetch(url, {
+              method: fetchMethod,
+              body: formData,
+            })
+            .then(response => response.json())
+            .then(result => {
+                $('#spinner').hide()
+                let message=""
+                if(fetchMethod=="POST")
+                    message = "Added successfully"
+                else 
+                    message = "Updated successfully"
+                Toastify({
+                    text: message,
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#4fbe87",
+                }).showToast();
+                fetchData()
+                console.log('Fetch Success:', result);
+            })
+            .catch(error => {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Something Went Wrong. Refresh and Try Again",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#f3616d",
+                }).showToast();
+                console.error('Fetch Error:', error);
+            });
+        }
+
+        $('#updateModal #form').submit(function(e){
+            e.preventDefault()
+            let formSelector = '#updateModal #form'
+            let id = $(formSelector)[0].getAttribute("itemId")
+            const url = `${BASEURL + id}/`
+            formSubmit(formSelector, url, "PUT")
+        })
+
+        $('#createModal #form').submit(function(e){
+            e.preventDefault()
+            let formSelector = '#createModal #form'
+            formSubmit(formSelector, BASEURL, "POST")
         })
     </script>
-    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

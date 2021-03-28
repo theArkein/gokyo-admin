@@ -47,5 +47,9 @@ if(typeof PerfectScrollbar == 'function') {
     });
 }
 
-// Scroll into active sidebar
-document.querySelector('.sidebar-item.active').scrollIntoView(false)
+
+// enabling tooltip
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+})

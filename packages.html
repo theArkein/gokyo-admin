@@ -11,13 +11,18 @@
     <link rel="stylesheet" href="assets/css/bootstrap.css">
 
     <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
+    <link rel="stylesheet" href="assets/vendors/summernote/summernote-lite.min.css">
+    <link rel="stylesheet" href="assets/vendors/toastify/toastify.css">
 
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
 </head>
-
+<style>
+.note-editor.note-frame .note-editing-area .note-editable{background: #fff !important}
+    
+</style>
 <body>
     <div id="app">
         <div id="sidebar" class="active">
@@ -25,9 +30,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <!-- <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a> -->
-                            <a href="dashboard.html">Gokyo Tours & Travels</a>
-
+                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -38,7 +41,7 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item">
                             <a href="dashboard.html" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
@@ -51,48 +54,19 @@
                                 <span>Bookings</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
+                        
+                        <li class="sidebar-item active">
+                            <a href="packages.html" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Packages</span>
                             </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="packages.html">List All Packages</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="package.html">Add New Package</a>
-                                </li>
-                            </ul>
                         </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
+                        <li class="sidebar-item ">
+                            <a href="categories.html" class='sidebar-link'>
                                 <i class="bi bi-card-checklist"></i>
-                                <span>Catgories</span>
+                                <span>Categories</span>
                             </a>
-                            <ul class="submenu">
-                                <li class="submenu-item ">
-                                    <a href="categories.html">List All Catgegories</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="category.html">Add New Category</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-folder"></i>
-                                <span>Pages</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="component-alert.html">Home</a>
-                                    <a href="component-alert.html">Contact</a>
-                                </li>
-                            </ul>
                         </li>
 
                         <li class="sidebar-item  has-sub">
@@ -103,8 +77,11 @@
                             <ul class="submenu ">
                                 <li class="submenu-item ">
                                     <a href="banners.html">Banners</a>
-                                    <a href="#">Testimonials</a>
-                                    <a href="#">Why Us</a>
+                                    <a href="testimonials.html">Testimonials</a>
+                                    <a href="why-us.html">Why Choose Us</a>
+                                    <a href="contacts.html">Contact Details</a>
+                                    <a href="about.html">About Details</a>
+
                                 </li>
                             </ul>
                         </li>
@@ -196,7 +173,7 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Package</h3>
+                                <h3>Packages</h3>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -209,7 +186,7 @@
                             </div>
                         </div>
                         <div class="button">
-                            <a href="package.html?package=new" class="btn btn-sm btn-primary rounded-pill">Add New Package</a>
+                            <button type="button" class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#createModal">Add New Package</button>
                         </div>
                         </div>
                     </div>
@@ -226,63 +203,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Annpurna</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                            <td>
-                                                <a href="package.html?package=1" class="btn btn-sm btn-primary rounded-pill">
-                                                    <i class="bi bi-pencil"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-sm btn-danger rounded-pill">
-                                                    <i class="bi bi-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Lake Rara</td>
-                                            <td>
-                                                <span class="badge bg-warning">Inactive</span>
-                                            </td>
-                                            <td>
-                                                <a href="package.html?package=12" class="btn btn-sm btn-primary rounded-pill">
-                                                    <i class="bi bi-pencil"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-sm btn-danger rounded-pill">
-                                                    <i class="bi bi-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Manakamana</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                            <td>
-                                                <a href="package.html?package=1234" class="btn btn-sm btn-primary rounded-pill">
-                                                    <i class="bi bi-pencil"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-sm btn-danger rounded-pill">
-                                                    <i class="bi bi-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kathmandu</td>
-                                            <td>
-                                                <span class="badge bg-warning">Inactive</span>
-                                            </td>
-                                            <td>
-                                                <a href="package.html?package=123" class="btn btn-sm btn-primary rounded-pill">
-                                                    <i class="bi bi-pencil"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-sm btn-danger rounded-pill">
-                                                    <i class="bi bi-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        <tr><td class='dataTables-empty' colspan='3'>Loading...</td></tr>   
                                     </tbody>
                                 </table>
                             </div>
@@ -304,19 +225,617 @@
                 </footer> -->
             </div>
         </div>
+
+        <!-- Modals -->
+        <div class="modals"> 
+            <!-- New Banner Form -->
+            <div class="modal fade text-left modal-borderless w-100" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-modal="true" >
+                <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add New Package</h5>
+                            <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+                                <i data-feather="x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="form">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <textarea type="text" id="title" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="tag">Tag</label>
+                                            <textarea type="text" id="tag" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="description">Overview</label>
+                                            <textarea id="description" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="image">Choose Thumbnail</label>
+                                            <input type="file" id="image" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"></div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label >Categories</label>
+                                            <ul class="list-unstyled mb-0 categories-ul"></ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="price">Price</label>
+                                            <input type="text" id="price" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="discounted_price">Discounted Price</label>
+                                            <input type="text" id="discounted_price" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="place">Place</label>
+                                            <input type="text" id="place" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="package_type">Package Type</label>
+                                            <input type="text" id="package_type" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="difficulty">Difficulty</label>
+                                            <input type="text" id="difficulty" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="group_size">Group Size</label>
+                                            <input type="text" id="group_size" class="form-control">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="duration">Duration</label>
+                                            <input type="text" id="duration" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="starts_from">Starts From (Place)</label>
+                                            <input type="text" id="starts_from" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="ends_at">Ends At (Place)</label>
+                                            <input type="text" id="ends_at" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="best_season">Best Season</label>
+                                            <input type="text" id="best_season" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="itinerary">Itinerary</label>
+                                            <textarea id="itinerary" class="summernote"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="highlights">Highlights</label>
+                                            <textarea id="highlights" class="summernote"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="services">Includes/Excludes</label>
+                                            <textarea id="services" class="summernote"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="equipments">Equipments</label>
+                                            <textarea id="equipments" class="summernote"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-check form-switch">
+                                            <label >Publish</label>
+                                            <input class="form-check-input" type="checkbox" id="status" name="status" checked="true">
+                                        </div>
+                                    </div> 
+
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Close</span>
+                                        </button>
+                                        <button type="submit"
+                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade text-left modal-borderless w-100" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-modal="true" >
+                <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Package</h5>
+                            <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+                                <i data-feather="x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="form">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <textarea type="text" id="title" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="tag">Tag</label>
+                                            <textarea type="text" id="tag" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="description">Overview</label>
+                                            <textarea id="description" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="thumbnail">Package Thumbnail</label>
+                                            <img src="" alt="" id="thumbanil" width="100px">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="image">Change Thumbnail</label>
+                                            <input type="file" id="image" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"></div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label >Categories</label>
+                                            <ul class="list-unstyled mb-0 categories-ul"></ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="price">Price</label>
+                                            <input type="text" id="price" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="discounted_price">Discounted Price</label>
+                                            <input type="text" id="discounted_price" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="place">Place</label>
+                                            <input type="text" id="place" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="package_type">Package Type</label>
+                                            <input type="text" id="package_type" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="difficulty">Difficulty</label>
+                                            <input type="text" id="difficulty" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="group_size">Group Size</label>
+                                            <input type="text" id="group_size" class="form-control">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="duration">Duration</label>
+                                            <input type="text" id="duration" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="starts_from">Starts From (Place)</label>
+                                            <input type="text" id="starts_from" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="ends_at">Ends At (Place)</label>
+                                            <input type="text" id="ends_at" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="best_season">Best Season</label>
+                                            <input type="text" id="best_season" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="itinerary">Itinerary</label>
+                                            <textarea id="itinerary" class="summernote"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="highlights">Highlights</label>
+                                            <textarea id="highlights" class="summernote"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="services">Includes/Excludes</label>
+                                            <textarea id="services" class="summernote"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="equipments">Equipments</label>
+                                            <textarea id="equipments" class="summernote"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-check form-switch">
+                                            <label >Publish</label>
+                                            <input class="form-check-input" type="checkbox" id="status" name="status" checked="">
+                                        </div>
+                                    </div> 
+
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Close</span>
+                                        </button>
+                                        <button type="submit"
+                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+           <div class="modal fade text-left modal-borderless show" id="spinner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        </div>
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <p>
+                                <img src="assets/vendors/svg-loaders/audio.svg" class="me-4" style="width: 3rem" alt="audio">
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/vendors/jquery/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-
-   <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendors/toastify/toastify.js"></script>
+    <script src="assets/vendors/summernote/summernote-lite.min.js"></script>
+    <script src="assets/js/main.js"></script>
     <script>
-        // Simple Datatable
+        $('.summernote').summernote({
+            tabsize: 2,
+            height: 120,
+        })
+
+        const BASEURL = `http://18.206.147.162/api/v1/packages/package/`
+
         let table1 = document.querySelector('#table1');
         let dataTable = new simpleDatatables.DataTable(table1);
+            
+        let categories = null
+        $(document).ready(async function(){
+            fetchData()
+            fetchCategories()   
+        })
+
+        const fetchData = function (){
+            const fetchURL = `${BASEURL}`
+            fetch(fetchURL).then(response => response.json()).then(result => {
+                    populateTable(result)
+                })
+
+        }
+
+        const fetchCategories = function (){
+            const fetchURL = `http://18.206.147.162/api/v1/packages/category/`
+            fetch(fetchURL).then(response => response.json()).then(result => {
+                    setCategories(result)
+                })
+        }
+        const setCategories = (items)=>{
+            let list = ""
+            items.forEach(item=>{
+                list = list + `<li class="d-inline-block me-2 mb-1">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox-${item.name}" class="form-check-input" value="${item.name}">
+                                            <label for="checkbox1">${item.name}</label>
+                                        </div>
+                                    </div>
+                                </li>`
+            })
+            $(".categories-ul")[0].innerHTML = list
+            $(".categories-ul")[1].innerHTML = list
+
+        }
+
+        const populateTable = (items)=>{
+            dataTable.destroy()
+            let tbody = $('tbody')[0]
+
+            tbody.innerHTML=""
+            
+            if(items.length==0){
+                tbody.innerHTML="<tr><td class='dataTables-empty' colspan='3'>No data to show</td></tr>"
+                return 
+            }
+
+            items.forEach(item=>{
+                let tr = document.createElement('tr')
+                let stringItem = JSON.stringify(item)
+                tr.innerHTML = `<tr>
+                                    <td>${item.title}</td>
+                                    ${(item.status)? "<td><span class='badge bg-success'> Active </span></td>": "<td><span class='badge bg-warning'> Inactive </span></td>"}
+                                    <td>
+                                        <a class="btn btn-sm btn-primary rounded-pill" onclick="update(${item.id})" data-bs-toggle="modal" data-bs-target="#updateModal">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger rounded-pill" onclick='remove(${item.id})'>
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>`
+                tbody.appendChild(tr)
+            })
+
+            let table1 = document.querySelector('#table1');
+            dataTable = new simpleDatatables.DataTable(table1);
+        }
+
+        const update = function(id){
+            $('#spinner').show()
+            const fetchURL = `${BASEURL + id}/`
+            fetch(fetchURL).then(response => response.json()).then(item => {
+                $('#spinner').hide()
+                let formSelector = '#updateModal #form'
+                
+                $(`${formSelector} #title`)[0].value=item.title
+                $(`${formSelector} #tag`)[0].value=item.tag
+                $(`${formSelector} img`)[0].src=item.image
+                $(`${formSelector} #description`)[0].value=item.description
+                $(`${formSelector} #price`)[0].value=item.price
+                $(`${formSelector} #discounted_price`)[0].value=item.discounted_price
+                $(`${formSelector} #duration`)[0].value=item.duration
+                $(`${formSelector} #place`)[0].value=item.destination
+                $(`${formSelector} #group_size`)[0].value=item.group_size
+                $(`${formSelector} #starts_from`)[0].value=item.start_location
+                $(`${formSelector} #ends_at`)[0].value=item.end_location
+                $(`${formSelector} #package_type`)[0].value=item.package_type
+                $(`${formSelector} #difficulty`)[0].value=item.difficulty
+                $(`${formSelector} #best_season`)[0].value=item.best_season
+                $(`${formSelector} #status`)[0].checked=item.status
+
+                $(`${formSelector} #itinerary`).summernote('code', item.itinerary);
+                $(`${formSelector} #highlights`).summernote('code', item.highlights);
+                $(`${formSelector} #equipments`).summernote('code', item.equipments);
+                $(`${formSelector} #services`).summernote('code', item.services);
+
+                let c = item.category.split(",")
+                c.forEach(i=>{
+                    console.log(i)
+                    $(`${formSelector} #checkbox-${i}`)[0].checked="true"
+                })
+                $(formSelector)[0].setAttribute("itemId", item.id)
+            })              
+        }
+
+        const remove = function(id){
+            if(!window.confirm("Are you sure to delete?"))
+                return false
+            $('#spinner').show()
+            fetch(`${BASEURL + id}/`, {
+              method: "DELETE"
+            }).then(response =>  {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Deleted successfully",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#4fbe87",
+                }).showToast();
+                fetchData()
+            }).catch(error => {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Something Went Wrong. Refresh and Try Again",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#f3616d",
+                }).showToast();
+                // console.error('Fetch Error:', error);
+            });
+        }
+
+        const formSubmit = function(formSelector, url, fetchMethod){
+            $('#spinner').show()
+            
+            let checkboxes = document.querySelectorAll(`${formSelector} .categories-ul .checkbox input`)
+            let categorySelected = []
+            checkboxes.forEach(item=>{
+                if(item.checked)
+                    categorySelected.push(item.value)
+            })
+
+            let formData = new FormData();
+
+            formData.append('title', $(`${formSelector} #title`)[0].value)
+            formData.append('tag', $(`${formSelector} #tag`)[0].value)
+            formData.append('description', $(`${formSelector} #description`)[0].value)
+            formData.append('status', $(`${formSelector} #status`)[0].checked);
+            formData.append('group_size', $(`${formSelector} #group_size`)[0].value)
+            formData.append('duration', $(`${formSelector} #duration`)[0].value)
+            formData.append('price', $(`${formSelector} #price`)[0].value)
+            formData.append('discounted_price', $(`${formSelector} #price`)[0].value)
+            formData.append('destination', $(`${formSelector} #place`)[0].value)
+            formData.append('difficulty', $(`${formSelector} #difficulty`)[0].value)
+            formData.append('starts_location', $(`${formSelector} #starts_from`)[0].value)
+            formData.append('ends_location', $(`${formSelector} #ends_at`)[0].value)
+            formData.append('package_type', $(`${formSelector} #package_type`)[0].value)
+            formData.append('best_season', $(`${formSelector} #best_season`)[0].value)
+
+            formData.append('highlights', $(`${formSelector} #highlights`).summernote('code'))
+            formData.append('itinerary', $(`${formSelector} #itinerary`).summernote('code'))
+            formData.append('services', $(`${formSelector} #services`).summernote('code'))
+            formData.append('equipments', $(`${formSelector} #equipments`).summernote('code'))
+
+            formData.append('category', categorySelected.toString())
+
+            const fileField = document.querySelector(`${formSelector} input[type="file"]`);
+
+            if(fileField.files.length)
+                formData.append('image', fileField.files[0]);
+
+            fetch(url, {
+              method: fetchMethod,
+              body: formData,
+            })
+            .then(response => response.json())
+            .then(result => {
+                $('#spinner').hide()
+                let message=""
+                if(fetchMethod=="POST")
+                    message = "Added successfully"
+                else 
+                    message = "Updated successfully"
+                Toastify({
+                    text: message,
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#4fbe87",
+                }).showToast();
+                fetchData()
+                console.log('Fetch Success:', result);
+            })
+            .catch(error => {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Something Went Wrong. Refresh and Try Again",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#f3616d",
+                }).showToast();
+                console.error('Fetch Error:', error);
+            });
+        }
+
+        $('#updateModal #form').submit(function(e){
+            e.preventDefault()
+            let formSelector = '#updateModal #form'
+            let id = $(formSelector)[0].getAttribute("itemId")
+            const url = `${BASEURL + id}/`
+            formSubmit(formSelector, url, "PUT")
+        })
+
+        $('#createModal #form').submit(function(e){
+            e.preventDefault()
+            let formSelector = '#createModal #form'
+            formSubmit(formSelector, BASEURL, "POST")
+        })
+
     </script>
-
-
-    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

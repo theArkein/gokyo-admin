@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/vendors/toastify/toastify.css">
-    <link rel="stylesheet" href="assets/vendors/summernote/summernote-lite.min.css">
+    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
 
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
@@ -25,8 +25,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <!-- <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a> -->
-                            <a href="dashboard.html">Gokyo Tours & Travels</a>
+                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
 
                         </div>
                         <div class="toggler">
@@ -38,7 +37,7 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item">
                             <a href="dashboard.html" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
@@ -51,48 +50,19 @@
                                 <span>Bookings</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
+                        
+                        <li class="sidebar-item ">
+                            <a href="packages.html" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Packages</span>
                             </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="packages.html">List All Packages</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="package.html">Add New Package</a>
-                                </li>
-                            </ul>
                         </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
+                        <li class="sidebar-item ">
+                            <a href="categories.html" class='sidebar-link'>
                                 <i class="bi bi-card-checklist"></i>
-                                <span>Catgories</span>
+                                <span>Categories</span>
                             </a>
-                            <ul class="submenu">
-                                <li class="submenu-item ">
-                                    <a href="categories.html">List All Catgegories</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="category.html">Add New Category</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-folder"></i>
-                                <span>Pages</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="component-alert.html">Home</a>
-                                    <a href="component-alert.html">Contact</a>
-                                </li>
-                            </ul>
                         </li>
 
                         <li class="sidebar-item  has-sub active">
@@ -104,7 +74,10 @@
                                 <li class="submenu-item ">
                                     <a href="banners.html">Banners</a>
                                     <a href="testimonials.html">Testimonials</a>
-                                    <a href="why-us.html">Why Us</a>
+                                    <a href="why-us.html">Why Choose Us</a>
+                                    <a href="contacts.html">Contact Details</a>
+                                    <a href="about.html">About Details</a>
+
                                 </li>
                             </ul>
                         </li>
@@ -231,7 +204,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            <tr><td class='dataTables-empty' colspan='5'>Loading...</td></tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -337,8 +310,8 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="review">Image</label>
-                                                <img src="" alt="" width="50px" height="50px">
+                                                <label for="review">Client Image</label>
+                                                <img src="" alt="" width="50px" height="50px" style="border-radius: 50%; object-fit: cover;">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -350,7 +323,7 @@
                                         <div class="col-12">
                                             <div class="form-check form-switch">
                                                 <input class="form-check-input" type="checkbox" id="status" name="status" checked="">
-                                                <label class="form-check-label" for="status">Status (To publish on site)</label>
+                                                <label class="form-check-label" for="status">Publish</label>
                                             </div>
                                         </div>
                                     </div>
@@ -388,32 +361,113 @@
     </div>
     <script src="assets/vendors/jquery/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-
-    <script src="assets/vendors/summernote/summernote-lite.min.js"></script>
+    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
     <script src="assets/vendors/toastify/toastify.js"></script>
-    <script src="assets/js/extensions/toastify.js"></script>
 
     <script src="assets/js/main.js"></script>
     <script>
 
+        const BASEURL = `http://18.206.147.162/api/v1/info/testimonial/`
 
-        const fetchTableData = function (){
-            let url = `http://18.206.147.162/api/v1/info/testimonial/`
-            fetch(url).then(response => response.json())
-            .then(result => {
-                populateTableData(result)
-            })
-        }
-        
-        $(document).ready(function(){
-            $('tbody').append("Loading...")
-            fetchTableData()
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+
+        $(document).ready(async function(){
+            fetchData()
         })
 
+        const fetchData = function (){
+            const fetchURL = `${BASEURL}`
+            fetch(fetchURL).then(response => response.json()).then(result => {
+                    populateTable(result)
+                })
+
+        }
+
+        const populateTable = (items)=>{
+            dataTable.destroy()
+            let tbody = $('tbody')[0]
+
+            tbody.innerHTML=""
+            
+            if(items.length==0){
+                tbody.innerHTML="<tr><td class='dataTables-empty' colspan='5'>No data to show</td></tr>"
+                return 
+            }
+
+            items.forEach(item=>{
+                let tr = document.createElement('tr')
+                tr.innerHTML = `<tr>
+                            <td>${item.user_name}</td>
+                            <td>${item.package}</td>
+                            <td>${item.content}</td>
+                            ${(item.status)? "<td><span class='badge bg-success'> Active </span></td>": "<td><span class='badge bg-warning'> Inactive </span></td>"}
+                            <td>
+                                <a class="btn btn-sm btn-primary rounded-pill" onclick="update(${item.id})" data-bs-toggle="modal" data-bs-target="#updateModal">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a class="btn btn-sm btn-danger rounded-pill" onclick="remove(${item.id})">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>`
+                tbody.appendChild(tr)
+            })
+
+            let table1 = document.querySelector('#table1');
+            dataTable = new simpleDatatables.DataTable(table1);
+        }
+
+        const update = function(id){
+            $('#spinner').show()
+            const fetchURL = `${BASEURL + id}/`
+            fetch(fetchURL).then(response => response.json()).then(item => {
+                $('#spinner').hide()
+                let formSelector = '#updateModal #form'
+                $(`${formSelector} #name`)[0].value=item.user_name
+                $(`${formSelector} #review`)[0].value=item.content
+                $(`${formSelector} #package`)[0].value=item.package
+                $(`${formSelector} img`)[0].src=item.image
+                $(`${formSelector} #status`)[0].checked=item.status
+                $(formSelector)[0].setAttribute("itemId", item.id)
+            })              
+        }
+
+        const remove = function(id){
+            if(!window.confirm("Are you sure to delete?"))
+                return false
+            $('#spinner').show()
+            fetch(`${BASEURL + id}/`, {
+              method: "DELETE"
+            }).then(response =>  {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Deleted successfully",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#4fbe87",
+                }).showToast();
+                fetchData()
+            }).catch(error => {
+                $('#spinner').hide()
+                Toastify({
+                    text: "Something Went Wrong. Refresh and Try Again",
+                    duration: 3000,
+                    close:true,
+                    gravity:"top",
+                    position: "center",
+                    backgroundColor: "#f3616d",
+                }).showToast();
+                // console.error('Fetch Error:', error);
+            });
+        }
 
         const formSubmit = function(formSelector, url, fetchMethod){
             $('#spinner').show()
-            const formData = new FormData();
+            
+            let formData = new FormData();
             const fileField = document.querySelector(`${formSelector} input[type="file"]`);
             formData.append('user_name', $(`${formSelector} #name`)[0].value)
             formData.append('content',$(`${formSelector} #review`)[0].value)
@@ -444,7 +498,7 @@
                     position: "center",
                     backgroundColor: "#4fbe87",
                 }).showToast();
-                fetchTableData()
+                fetchData()
                 console.log('Fetch Success:', result);
             })
             .catch(error => {
@@ -459,108 +513,20 @@
                 }).showToast();
                 console.error('Fetch Error:', error);
             });
-
         }
 
-        const update = function(item){
+        $('#updateModal #form').submit(function(e){
+            e.preventDefault()
             let formSelector = '#updateModal #form'
-            $(`${formSelector} #name`)[0].value=item.user_name
-            $(`${formSelector} #review`)[0].value=item.content
-            $(`${formSelector} #package`)[0].value=item.package
-            $(`${formSelector} img`)[0].src=item.image
-            $(`${formSelector} #status`)[0].checked=item.status
-
-
-            $(formSelector).submit(function(e){
-                e.preventDefault()
-                formSubmit(formSelector, `http://18.206.147.162/api/v1/info/testimonial/${item.id}/`, "PUT")
-            })
-
-        }
-        const remove = function(item){
-            $('#spinner').show()
-            window.confirm("Are you sure you to delete?")
-            fetch(`http://18.206.147.162/api/v1/info/testimonial/${item.id}`, {
-              method: "DELETE"
-            })
-            .then(response =>  {
-                $('#spinner').hide()
-                Toastify({
-                    text: "Testimonial deleted successfully",
-                    duration: 3000,
-                    close:true,
-                    gravity:"top",
-                    position: "center",
-                    backgroundColor: "#4fbe87",
-                }).showToast();
-                fetchTableData()
-                // console.log('Fetch Success:', result);
-            })
-            .catch(error => {
-                $('#spinner').hide()
-                Toastify({
-                    text: "Something Went Wrong. Refresh and Try Again",
-                    duration: 3000,
-                    close:true,
-                    gravity:"top",
-                    position: "center",
-                    backgroundColor: "#f3616d",
-                }).showToast();
-                // console.error('Fetch Error:', error);
-            });
-        }
-
-        const populateTableData = (items)=>{
-            let tbody = $('tbody')[0]
-            tbody.innerHTML=""
-            
-            if(items.length==0){
-                tbody.append("No data to show")
-                return 
-            }
-            items.forEach(item=>{
-                let tr = document.createElement('tr')
-                tr.innerHTML = `<tr>
-                            <td>${item.user_name}</td>
-                            <td>${item.package}</td>
-                            <td>${item.content}</td>
-                            ${(item.status)? "<td><span class='badge bg-success'> Active </span></td>": "<td><span class='badge bg-warning'> Inactive </span></td>"}
-                            <td>
-                                <a class="btn btn-sm btn-primary rounded-pill update${item.id}" data-bs-toggle="modal" data-bs-target="#updateModal">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
-                                <a class="btn btn-sm btn-danger rounded-pill delete${item.id}">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                            </td>
-                        </tr>`
-                tbody.appendChild(tr)
-                let editBtn = $(`.update${item.id}`)
-                let deleteBtn = $(`.delete${item.id}`)
-
-                editBtn.click(function (){
-                    update(item)
-                })
-                deleteBtn.click(function (){
-                    remove(item)
-                })
-
-            })
-        }
-
-        $('.summernote').summernote({
-            tabsize: 2,
-            height: 120,
+            let id = $(formSelector)[0].getAttribute("itemId")
+            const url = `${BASEURL + id}/`
+            formSubmit(formSelector, url, "PUT")
         })
-    
 
         $('#createModal #form').submit(function(e){
             e.preventDefault()
             let formSelector = '#createModal #form'
-            $(formSelector).submit(function(e){
-                e.preventDefault()
-                formSubmit(formSelector, `http://18.206.147.162/api/v1/info/testimonial/`, "POST")
-            })
+            formSubmit(formSelector, BASEURL, "POST")
         })
     </script>
 </body>
