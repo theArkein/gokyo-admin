@@ -151,23 +151,29 @@
                             <div class="card-body">
                                 <form id="form">
                                     <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="introduction">Introduction</label>
-                                                <textarea id="introduction" class="form-control" required></textarea>
-                                            </div>
+                                        <div class="col-md-4 mb-4">
+                                            <h6>Slider One</h6>
+                                            <p>Select category to display in first slider in homepage</p>
+                                            <fieldset class="form-group">
+                                                <select class="form-select" id="sliderOne">
+                                                </select>
+                                            </fieldset>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="history">History</label>
-                                                <textarea id="history" class="form-control" required></textarea>
-                                            </div>
+                                        <div class="col-md-4 mb-4">
+                                            <h6>Slider Two</h6>
+                                            <p>Select category to display in first slider in homepage</p>
+                                            <fieldset class="form-group">
+                                                <select class="form-select" id="sliderTwo">
+                                                </select>
+                                            </fieldset>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="mission">Mission</label>
-                                                <textarea id="mission" class="form-control" required></textarea>
-                                            </div>
+                                        <div class="col-md-4 mb-4">
+                                            <h6>Slider Three</h6>
+                                            <p>Select category to display in first slider in homepage</p>
+                                            <fieldset class="form-group">
+                                                <select class="form-select" id="sliderThree">
+                                                </select>
+                                            </fieldset>
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
@@ -211,19 +217,37 @@
     <script src="assets/js/main.js"></script>
     <script>
 
-        const BASEURL = `http://18.206.147.162/api/v1/info/about/`
+        const BASEURL = `http://18.206.147.162/api/v1/info/slider/1/`
 
         $(document).ready(async function(){
-            fetchData()
+            fetchCategories()
         })
+
+        const fetchCategories = function (){
+            const fetchURL = `http://18.206.147.162/api/v1/packages/category/`
+            fetch(fetchURL).then(response => response.json()).then(result => {
+                    setCategories(result)
+                    fetchData()
+                })
+        }
+
+        const setCategories = (items)=>{
+            let list = ""
+            items.forEach(item=>{
+                list = list + `<option>${item.name}</option>`
+            })
+            console.log(list)
+            $("#sliderOne")[0].innerHTML = list
+            $("#sliderTwo")[0].innerHTML = list
+            $("#sliderThree")[0].innerHTML = list
+        }
 
         const fetchData = function (){
             const fetchURL = `${BASEURL}`
             
-            $('#spinner').show()    
-            
+            $('#spinner').show()   
             fetch(fetchURL).then(response => response.json()).then(result => {
-                    populateForm(result[0])
+                    populateForm(result)
                 })
 
         }
@@ -232,9 +256,9 @@
         
             let formSelector = '#form'
         
-            $(`${formSelector} #introduction`)[0].value=item.introduction
-            $(`${formSelector} #history`)[0].value=item.history
-            $(`${formSelector} #mission`)[0].value=item.mission
+            $(`${formSelector} #sliderOne`)[0].value=item.slider1
+            $(`${formSelector} #sliderTwo`)[0].value=item.slider2
+            $(`${formSelector} #sliderThree`)[0].value=item.slider3
 
             $(formSelector)[0].setAttribute("itemId", item.id)   
         
@@ -246,9 +270,9 @@
 
             let formData = new FormData();
 
-            formData.append('introduction', $(`${formSelector} #introduction`)[0].value);
-            formData.append('history', $(`${formSelector} #history`)[0].value);
-            formData.append('mission', $(`${formSelector} #mission`)[0].value);
+            formData.append('slider1', $(`${formSelector} #sliderOne`)[0].value);
+            formData.append('slider2', $(`${formSelector} #sliderTwo`)[0].value);
+            formData.append('slider3', $(`${formSelector} #sliderThree`)[0].value);
 
 
             fetch(url, {
@@ -292,7 +316,7 @@
             e.preventDefault()
             let formSelector = '#form'
             let id = $(formSelector)[0].getAttribute("itemId")
-            const url = `${BASEURL + id}/`
+            const url = `${BASEURL}`
             formSubmit(formSelector, url, "PUT")
         })
     </script>
