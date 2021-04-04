@@ -681,8 +681,13 @@
             if(!window.confirm("Are you sure to delete?"))
                 return false
             $('#spinner').show()
+            let token = localStorage.getItem('gokyo_admin_key')
+
             fetch(`${BASEURL + id}/`, {
-              method: "DELETE"
+              method: "DELETE",
+              headers: {
+                  'Authorization': `Token ${token}`
+             }
             }).then(response =>  {
                 $('#spinner').hide()
                 Toastify({
@@ -749,9 +754,14 @@
             if(fileField.files.length)
                 formData.append('image', fileField.files[0]);
 
+            let token = localStorage.getItem('gokyo_admin_key')
+
             fetch(url, {
               method: fetchMethod,
               body: formData,
+              headers: {
+                  'Authorization': `Token ${token}`
+             }
             })
             .then(response => response.json())
             .then(result => {

@@ -271,9 +271,15 @@
                 formData.append("user_id", item.user_id)
                 formData.append("package_id", item.package_id)
                 formData.append("status", "A")
+
+                let token = localStorage.getItem('gokyo_admin_key')
+
                 fetch(url, {
                   method: "PUT",
-                  body: formData
+                  body: formData,
+                  headers: {
+                      'Authorization': `Token ${token}`
+                 }
                 }).then(response =>  {
                     $('#spinner').hide()
                     response.json().then(console.log)
@@ -313,9 +319,15 @@
                 formData.append("user_id", item.user_id)
                 formData.append("package_id", item.package_id)
                 formData.append("status", "D")
+                
+                let token = localStorage.getItem('gokyo_admin_key')
+
                 fetch(url, {
                   method: "PUT",
-                  body: formData
+                  body: formData,
+                  headers: {
+                      'Authorization': `Token ${token}`
+                 }
                 }).then(response =>  {
                     $('#spinner').hide()
                     response.json().then(console.log)
@@ -347,8 +359,12 @@
             if(!window.confirm("Are you sure to delete?"))
                 return false
             $('#spinner').show()
+            let token = localStorage.getItem('gokyo_admin_key')
             fetch(`${BASEURL + id}/`, {
-              method: "DELETE"
+              method: "DELETE",
+              headers: {
+                  'Authorization': `Token ${token}`
+             }
             }).then(response =>  {
                 $('#spinner').hide()
                 Toastify({

@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gokyo Tour & Travels - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/vendors/toastify/toastify.css">
+    <link rel="stylesheet" href="assets/css/pages/auth.css">
+
+</head>
+<style>
+    body {
+        display: flex;
+    }
+    .wrapper{
+        width: 520px;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .form-container {
+        background-color: #f1f1f1;
+        padding: 20px 40px;
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <div class="auth-logo">
+            <a href="dashboard.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset="" width="120px"></a>
+        </div>
+        <div class="form-container">   
+            <h5>Admin Panel</h5>
+            <p class="auth-subtitle mb-5">Log in with your ceredentials.</p>
+
+            <form id="signin">
+                <div class="form-group position-relative has-icon-left mb-4">
+                    <input type="text" class="form-control form-control-xl" name="email" placeholder="Username">
+                    <div class="form-control-icon">
+                        <i class="bi bi-person"></i>
+                    </div>
+                </div>
+                <div class="form-group position-relative has-icon-left mb-4">
+                    <input type="password" class="form-control form-control-xl" name="password" placeholder="Password">
+                    <div class="form-control-icon">
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="modals"> 
+        <!-- Loading Spinner -->
+       <div class="modal fade text-left modal-borderless show" id="spinner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body d-flex justify-content-center align-items-center">
+                        <p>
+                            <img src="assets/vendors/svg-loaders/audio.svg" class="me-4" style="width: 3rem" alt="audio">
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="assets/vendors/jquery/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/toastify/toastify.js"></script>
+
+    <script>
+             $('form#signin').submit((e)=>{
+                  e.preventDefault()
+                  $('#spinner').show()
+
+                  let user = new FormData($('form#signin')[0]);
+                  const url = `http://18.206.147.162/api/v1/api-auth/login/`
+                  fetch(url, {
+                      method: 'POST',
+                      body: user,
+                  }).then(async (response)=>{
+                       let result = await response.json();
+                       if(response.status == 200){
+                            localStorage.setItem('gokyo_admin_key', result.key);
+                            fetch(`http://18.206.147.162/api/v1/api-auth/user/`, {
+                                 method: 'GET',
+                                 headers: {
+                                      'Authorization': `Token ${result.key}`
+                                 }
+                            }).then(res=>res.json()).then(user=>{
+                                 console.log(user)
+                                 localStorage.setItem('gokyo_admin_id', user.pk);
+                                 localStorage.setItem('gokyo_adminname', user.username);
+                                 window.location.href = `./dashboard.html`
+                            })
+                       } else{
+                             $('#spinner').hide()
+                            Toastify({
+                                text: "Checkyour ceredentials again",
+                                duration: 3000,
+                                close:true,
+                                gravity:"top",
+                                position: "center",
+                                backgroundColor: "#f3616d",
+                            }).showToast()
+                            console.log(result)
+                       }
+                  })
+
+             })
+    </script>
+
+</body>
+</html>

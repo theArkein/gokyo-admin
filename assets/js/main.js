@@ -54,6 +54,17 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
-const logout = function (){
-    window.alert("logout")
+function logout(){
+    localStorage.clear()
+    window.location.href = `./index.html`    
+}
+
+const id = localStorage.getItem('gokyo_admin_id')
+const checkUser = `http://18.206.147.162/api/v1/users/${id}/`
+console.log(id, localStorage.getItem('gokyo_admin_key'))
+if(id && localStorage.getItem('gokyo_admin_key')){
+    console.log("Authorized")
+} else {
+    console.log("Not Authorized")
+    window.location.href = `./index.html`
 }

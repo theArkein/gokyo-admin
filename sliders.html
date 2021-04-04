@@ -274,10 +274,14 @@
             formData.append('slider2', $(`${formSelector} #sliderTwo`)[0].value);
             formData.append('slider3', $(`${formSelector} #sliderThree`)[0].value);
 
-
+            let token = localStorage.getItem('gokyo_admin_key')
+            
             fetch(url, {
               method: fetchMethod,
               body: formData,
+              headers: {
+                  'Authorization': `Token ${token}`
+             }
             })
             .then(response => response.json())
             .then(result => {

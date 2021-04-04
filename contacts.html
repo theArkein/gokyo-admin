@@ -285,9 +285,14 @@
             formData.append('youtube_link', $(`${formSelector} #youtube_link`)[0].value);
 
 
+            let token = localStorage.getItem('gokyo_admin_key')
+
             fetch(url, {
               method: fetchMethod,
               body: formData,
+              headers: {
+                  'Authorization': `Token ${token}`
+             }
             })
             .then(response => response.json())
             .then(result => {
