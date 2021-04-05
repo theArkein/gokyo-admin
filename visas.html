@@ -10,11 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
 
-    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/vendors/toastify/toastify.css">
+    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
 
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -149,76 +150,43 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Contact Details</h3>
+                                <h3>Visa Enquiries</h3>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Posts
-                                        </li>
-                                        <li class="breadcrumb-item active" aria-current="page">Contact Details
+                                        <li class="breadcrumb-item active" aria-current="page">Visa Enquiries
                                         </li>
                                     </ol>
                                 </nav>
                             </div>
                         </div>
+                        <div class="buttons">
+                            <!-- <a href="#" class="btn btn-sm btn-primary rounded-pill">Add New Package</a> -->
+                        </div>
+                        </div>
                     </div>
-                </div>
 
-                    <section class="section">
+                   <section class="section">
                         <div class="card">
                             <div class="card-body">
-                                <form id="form">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="address">Address</label>
-                                                <input id="address" class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="email" id="email" class="form-control"
-                                                   required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="phone">Phone</label>
-                                                <input type="text" id="phone" class="form-control"
-                                                    required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="phone1">Mobile</label>
-                                                <input type="text" id="mobile" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="facebook_link">Facebook Link</label>
-                                                <input type="text" id="facebook_link" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="instagram_link">Instagram Link</label>
-                                                <input type="text" id="instagram_link" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="youtube_link">Youtube Link</label>
-                                                <input type="text" id="youtube_link" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Update</button>
-                                    </div>
-                                </form>
+                                <table class="table table-striped" id="table1">
+                                    <thead>
+                                        <tr>
+                                            <th>Email</th>
+                                            <th>Contact</th>
+                                            <th>Country</th>
+                                            <th>Date of entry</th>
+                                            <th>Date of exit</th>
+                                            <th>Nationality</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td class='dataTables-empty' colspan='7'>Loading...</td></tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
@@ -227,101 +195,96 @@
                 </div>
 
             </div>
+        </div>
 
-            <!-- Modals -->
-            <div class="modals">
-
-                <!-- Loading Spinner -->
-               <div class="modal fade text-left modal-borderless show" id="spinner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            </div>
-                            <div class="modal-body d-flex justify-content-center align-items-center">
-                                <p>
-                                    <img src="assets/vendors/svg-loaders/audio.svg" class="me-4" style="width: 3rem" alt="audio">
-                                </p>
-                            </div>
-                            <div class="modal-footer">
-                            </div>
-                        </div>
+        <!-- Loading Spinner -->
+       <div class="modal fade text-left modal-borderless show" id="spinner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body d-flex justify-content-center align-items-center">
+                        <p>
+                            <img src="assets/vendors/svg-loaders/audio.svg" class="me-4" style="width: 3rem" alt="audio">
+                        </p>
+                    </div>
+                    <div class="modal-footer">
                     </div>
                 </div>
+            </div>
         </div>
     </div>
     <script src="assets/vendors/jquery/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
     <script src="assets/vendors/toastify/toastify.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
+     <script>
 
-        const BASEURL = `http://18.206.147.162/api/v1/info/contact/`
+        const BASEURL = `http://18.206.147.162/api/v1/info/visas/`
 
-        $(document).ready(async function(){
+            let table1 = document.querySelector('#table1');
+            let dataTable = new simpleDatatables.DataTable(table1);
+
+        $(document).ready(function(){
             fetchData()
         })
 
         const fetchData = function (){
             const fetchURL = `${BASEURL}`
-            
-            $('#spinner').show()    
-            
             fetch(fetchURL).then(response => response.json()).then(result => {
-                    populateForm(result[0])
-                })
+                console.log(result)    
+                populateTable(result)
+            })
 
         }
 
-        const populateForm = (item)=>{
-        
-            let formSelector = '#form'
-        
-            $(`${formSelector} #address`)[0].value=item.address
-            $(`${formSelector} #email`)[0].value=item.email
-            $(`${formSelector} #phone`)[0].value=item.phone
-            $(`${formSelector} #mobile`)[0].value=item.phone2
-            $(`${formSelector} #facebook_link`)[0].value=item.facebook_link
-            $(`${formSelector} #instagram_link`)[0].value=item.instagram_link
-            $(`${formSelector} #youtube_link`)[0].value=item.youtube_link
+        const populateTable = (items)=>{
+            dataTable.destroy()
+            let tbody = $('tbody')[0]
 
-            $(formSelector)[0].setAttribute("itemId", item.id)   
-        
-            $('#spinner').hide()
+            tbody.innerHTML=""
+
+            if(items.length==0){
+                tbody.innerHTML="<tr><td class='dataTables-empty' colspan='7'>No data to show</td></tr>"
+                return 
+            }
+
+            items.forEach(item=>{
+                let tr = document.createElement('tr')
+                tr.innerHTML = `<tr>
+                            <td>${item.email}</td>
+                            <td>${item.contact_number}</td>
+                            <td>${item.country}</td>
+                            <td>${item.date_of_entry}</td>
+                            <td>${item.date_of_exit}</td>
+                            <td>${item.nationality}</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary rounded-pill" onclick="remove(${item.id})">
+                                    <i class="bi bi-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i>
+                                </a>
+                            </td>
+                        </tr>`
+                tbody.appendChild(tr)
+            })
+            let table1 = document.querySelector('#table1');
+            dataTable = new simpleDatatables.DataTable(table1);
         }
 
-        const formSubmit = function(formSelector, url, fetchMethod){
+        const remove = function(id){
+            if(!window.confirm("Are you sure to delete?"))
+                return false
             $('#spinner').show()
-
-            let formData = new FormData();
-
-            formData.append('address', $(`${formSelector} #address`)[0].value);
-            formData.append('email', $(`${formSelector} #email`)[0].value);
-            formData.append('phone', $(`${formSelector} #phone`)[0].value);
-            formData.append('phone2', $(`${formSelector} #mobile`)[0].value);
-            formData.append('facebook_link', $(`${formSelector} #facebook_link`)[0].value);
-            formData.append('instagram_link', $(`${formSelector} #instagram_link`)[0].value);
-            formData.append('youtube_link', $(`${formSelector} #youtube_link`)[0].value);
-
-
             let token = localStorage.getItem('gokyo_admin_key')
-
-            fetch(url, {
-              method: fetchMethod,
-              body: formData,
+            fetch(`${BASEURL + id}/`, {
+              method: "DELETE",
               headers: {
                   'Authorization': `Token ${token}`
              }
-            })
-            .then(response => response.json())
-            .then(result => {
+            }).then(response =>  {
                 $('#spinner').hide()
-                let message=""
-                if(fetchMethod=="POST")
-                    message = "Added successfully"
-                else 
-                    message = "Updated successfully"
                 Toastify({
-                    text: message,
+                    text: "Deleted successfully",
                     duration: 3000,
                     close:true,
                     gravity:"top",
@@ -329,9 +292,7 @@
                     backgroundColor: "#4fbe87",
                 }).showToast();
                 fetchData()
-                console.log('Fetch Success:', result);
-            })
-            .catch(error => {
+            }).catch(error => {
                 $('#spinner').hide()
                 Toastify({
                     text: "Something Went Wrong. Refresh and Try Again",
@@ -341,17 +302,11 @@
                     position: "center",
                     backgroundColor: "#f3616d",
                 }).showToast();
-                console.error('Fetch Error:', error);
+                // console.error('Fetch Error:', error);
             });
         }
 
-        $('#form').submit(function(e){
-            e.preventDefault()
-            let formSelector = '#form'
-            let id = $(formSelector)[0].getAttribute("itemId")
-            const url = `${BASEURL + id}/`
-            formSubmit(formSelector, url, "PUT")
-        })
+
     </script>
 </body>
 

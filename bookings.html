@@ -25,7 +25,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="dashboard.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
 
                         </div>
                         <div class="toggler">
@@ -37,19 +37,37 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item">
+                        <li class="sidebar-item  active">
                             <a href="dashboard.html" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-files"></i>
+                                <span>Enquiries</span>
+                            </a>
+                            <ul class="submenu">
+                                <li class="submenu-item ">
+                                    <a href="flights.html">Flights</a>
+                                    <a href="visas.html">Visas</a>
+                                    <a href="rooms.html">Rooms</a>
+                                    <a href="vehicles.html">Vehicle</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="sidebar-item ">
                             <a href="bookings.html" class='sidebar-link'>
                                 <i class="bi bi-journal-bookmark-fill"></i>
                                 <span>Bookings</span>
                             </a>
                         </li>
+
+
                         
                         <li class="sidebar-item ">
                             <a href="packages.html" class='sidebar-link'>
@@ -73,11 +91,11 @@
                             <ul class="submenu ">
                                 <li class="submenu-item ">
                                     <a href="banners.html">Banners</a>
+                                    <a href="sliders.html">Sliders</a>
                                     <a href="testimonials.html">Testimonials</a>
                                     <a href="why-us.html">Why Choose Us</a>
                                     <a href="contacts.html">Contact Details</a>
                                     <a href="about.html">About Details</a>
-
                                 </li>
                             </ul>
                         </li>
@@ -113,7 +131,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                                     <li>
-                                        <h6 class="dropdown-header">Hello, John!</h6>
+                                        <h6 class="dropdown-header">Gokyo Admin</h6>
                                     </li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -156,7 +174,6 @@
                                 <table class="table table-striped" id="table1">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
                                             <th>Date</th>
                                             <th>Booked For</th>
                                             <th>Group Size</th>
@@ -167,7 +184,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr><td class='dataTables-empty' colspan='8'>Loading...</td></tr>
+                                        <tr><td class='dataTables-empty' colspan='7'>Loading...</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -216,8 +233,9 @@
         const fetchData = function (){
             const fetchURL = `${BASEURL}`
             fetch(fetchURL).then(response => response.json()).then(result => {
-                    populateTable(result)
-                })
+                console.log(result)    
+                populateTable(result)
+            })
 
         }
 
@@ -228,19 +246,18 @@
             tbody.innerHTML=""
 
             if(items.length==0){
-                tbody.innerHTML="<tr><td class='dataTables-empty' colspan='8'>No data to show</td></tr>"
+                tbody.innerHTML="<tr><td class='dataTables-empty' colspan='7'>No data to show</td></tr>"
                 return 
             }
 
             items.forEach(item=>{
                 let tr = document.createElement('tr')
                 tr.innerHTML = `<tr>
-                            <td>${item.id}</td>
                             <td>${item.booking_date.substring(0,10)}</td>
                             <td>${(item.booked_for)?item.booked_for.substring(0,10):""}</td>
                             <td>${item.quantity}</td>
-                            <td>${item.user_id}</td>
-                            <td>${item.package_id}</td>
+                            <td>${item.user_name}</td>
+                            <td>${item.package_title}</td>
                             ${(item.status)? (item.status=="A")? "<td><span class='badge bg-success'> Approved </span></td>" : "<td><span class='badge bg-warning'> Declined </span></td>" : "<td><span class='badge bg-danger'> Pending </span></td>"}
                             <td>
                                 <a class="btn btn-sm btn-success rounded-pill" onclick="approve(${item.id})">

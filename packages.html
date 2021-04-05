@@ -30,7 +30,8 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="dashboard.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -41,12 +42,28 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item">
+                        <li class="sidebar-item  active">
                             <a href="dashboard.html" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-files"></i>
+                                <span>Enquiries</span>
+                            </a>
+                            <ul class="submenu">
+                                <li class="submenu-item ">
+                                    <a href="flights.html">Flights</a>
+                                    <a href="visas.html">Visas</a>
+                                    <a href="rooms.html">Rooms</a>
+                                    <a href="vehicles.html">Vehicle</a>
+                                </li>
+                            </ul>
+                        </li>
+
 
                         <li class="sidebar-item ">
                             <a href="bookings.html" class='sidebar-link'>
@@ -54,8 +71,10 @@
                                 <span>Bookings</span>
                             </a>
                         </li>
+
+
                         
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item ">
                             <a href="packages.html" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Packages</span>
@@ -77,11 +96,11 @@
                             <ul class="submenu ">
                                 <li class="submenu-item ">
                                     <a href="banners.html">Banners</a>
+                                    <a href="sliders.html">Sliders</a>
                                     <a href="testimonials.html">Testimonials</a>
                                     <a href="why-us.html">Why Choose Us</a>
                                     <a href="contacts.html">Contact Details</a>
                                     <a href="about.html">About Details</a>
-
                                 </li>
                             </ul>
                         </li>
@@ -117,7 +136,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                                     <li>
-                                        <h6 class="dropdown-header">Hello, John!</h6>
+                                        <h6 class="dropdown-header">Gokyo Admin</h6>
                                     </li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -207,26 +226,26 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="title">Title</label>
-                                            <textarea type="text" id="title" class="form-control"></textarea>
+                                            <textarea type="text" id="title" class="form-control" required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="tag">Tag</label>
-                                            <textarea type="text" id="tag" class="form-control"></textarea>
+                                            <textarea type="text" id="tag" class="form-control" required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="description">Overview</label>
-                                            <textarea id="description" class="form-control"></textarea>
+                                            <textarea id="description" class="form-control" required></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="image">Choose Thumbnail</label>
-                                            <input type="file" id="image" class="form-control">
+                                            <input type="file" id="image" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6"></div>
@@ -572,8 +591,7 @@
             
         let categories = null
         $(document).ready(async function(){
-            fetchData()
-            fetchCategories()   
+            fetchData()  
         })
 
         const fetchData = function (){
@@ -643,6 +661,7 @@
         const update = function(id){
             $('#spinner').show()
             const fetchURL = `${BASEURL + id}/`
+            fetchCategories() 
             fetch(fetchURL).then(response => response.json()).then(item => {
                 $('#spinner').hide()
                 let formSelector = '#updateModal #form'
@@ -670,7 +689,7 @@
 
                 let c = item.category.split(",")
                 c.forEach(i=>{
-                    console.log(i)
+                    $(`${formSelector} #checkbox-${i}`)[0].checked="false"
                     $(`${formSelector} #checkbox-${i}`)[0].checked="true"
                 })
                 $(formSelector)[0].setAttribute("itemId", item.id)
